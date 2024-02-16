@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.8.0/styles/default.min.css">
+
+    <title>Amacle Migration Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #ddd;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1f232d;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #61dafb;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #61dafb;
+            border-bottom: 2px solid #61dafb;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        p {
+            color: #bbb;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style-type: none;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        pre code {
+            padding: 0;
+            border-radius: 5px;
+            display: block;
+            white-space: pre;
+            overflow-x: auto;
+            background-color: #282c34;
+            color: #abb2bf;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Amacle Model Documentation</h1>
+
+        <ul>
+            <li><a href="#Model-Initialization">Model Initialization</a></li>
+            <li><a href="#Conditions">Conditions</a></li>
+            <li><a href="#Joins">Joins</a></li>
+            <li><a href="#Transactions">Transactions</a></li>
+            <li><a href="#Pagination">Pagination</a></li>
+            <li><a href="#Selecting-Fields">Selecting Fields</a></li>
+            <li><a href="#Aggregation-Functions">Aggregation Functions</a></li>
+            <li><a href="#Ordering">Ordering</a></li>
+            <li><a href="#Updating-and-Deleting">Updating and Deleting</a></li>
+            <li><a href="#Inserting">Inserting</a></li>
+            <li><a href="#Subqueries">Subqueries</a></li>
+            <li><a href="#Grouping">Grouping</a></li>
+            <li><a href="#Fetching-Query-Builder">Fetching Query Builder</a></li>
+        </ul>
+
+        <h2 id="Model-Initialization">Model Initialization</h2>
+        <h3>To connect to the perticular table you need to create a Model </h3>
+        <pre><code>
+    npm run amacle create:model your_model_name
+    //Eg.
+    npm run amacle create:model User
+
+</code></pre>
+        <pre>
+        <code>
+    const Model = require('../data_access/Model');
+
+    /**
+        * User class representing a data model.
+        * @class
+        * @extends Model
+        */
+    class User extends Model {
+        // You can add specific properties or methods relevant to your User model here.
+    }
+
+    /**
+        * Exports the User class to make it available for use in other modules.
+        * @module
+        * @exports User
+        */
+    module.exports = User;
+
+</code>
+        </pre>
+        <p>The model is automatically initialized to User table upon instantiation of the User class.</p>
+
+        <h3>Use in yoru React component</h3>
+        <p>import User Model in yoru component</p>
+        <pre><code>
+    import User from '../Amacle/Models/User';
+        </code></pre>
+
+        <p>The model is automatically initialized to User table upon instantiation of the User class.</p>
+
+        <p>create a object of User Model in yoru component</p>
+        <pre><code>
+    const user = new User()
+        </code></pre>
+        <p>Insert data into User Model</p>
+        <pre><code>
+    user.insert({password, email:id}).then(result => {
+        console.log(result, "Data is inserted")
+    })
+        </code></pre>
+        <p>Get data from User table</p>
+        <pre><code>
+    const user = new User()
+
+    user.select("*").where("email", "=", id).get().then(result => {
+        console.log(result)
+
+    })
+        </code></pre>
+
+        <pre><code>
+    const user = new User()
+
+    user.select("*").where("email", "=", id).where("password", "=", password).count().get().then(result => {
+    console.log(result)
+
+    })
+    
+</code></pre>
+
+
+
+
+        <h2 id="Conditions">Conditions</h2>
+        <p>Conditions can be added for SQL queries using the <code>where</code>, <code>orWhere</code>, and
+            <code>find</code> methods.
+        </p>
+
+        <h2 id="Joins">Joins</h2>
+        <p>Inner joins can be performed with the <code>innerJoin</code> method.</p>
+
+        <h2 id="Transactions">Transactions</h2>
+        <p>Transactions can be managed with methods like <code>startTransaction</code>, <code>commit</code>,
+            <code>rollback</code>, and <code>executeInTransaction</code>.
+        </p>
+
+        <h2 id="Pagination">Pagination</h2>
+        <p>Pagination is supported through the <code>paginate</code> method.</p>
+
+        <h2 id="Selecting-Fields">Selecting Fields</h2>
+        <p>Specific fields can be selected with the <code>select</code> method.</p>
+
+        <h2 id="Aggregation-Functions">Aggregation Functions</h2>
+        <p>Aggregation functions like <code>sum</code>, <code>avg</code>, <code>min</code>, <code>max</code>,
+            <code>count</code>, <code>distinct</code>, and <code>concat</code> are supported.
+        </p>
+
+        <h2 id="Ordering">Ordering</h2>
+        <p>Results can be ordered with the <code>orderBy</code> and <code>orderByDesc</code> methods.</p>
+
+        <h2 id="Updating-and-Deleting">Updating and Deleting</h2>
+        <p>Records can be updated and deleted with the <code>update</code> and <code>delete</code> methods,
+            respectively.</p>
+
+        <h2 id="Inserting">Inserting</h2>
+        <p>Records can be inserted into the database using the <code>insert</code> method.</p>
+
+        <h2 id="Subqueries">Subqueries</h2>
+        <p>Subqueries are supported through the <code>subquery</code> method.</p>
+
+        <h2 id="Grouping">Grouping</h2>
+        <p>Results can be grouped with the <code>groupBy</code> method.</p>
+
+        <h2 id="Fetching-Query-Builder">Fetching Query Builder</h2>
+        <p>The constructed SQL query can be fetched using the <code>getQB</code> method.</p>
+    </div>
+</body>
+
+</html>
