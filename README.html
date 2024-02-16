@@ -1,117 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+To convert the provided HTML code into a Markdown file (README.md), you'll need to translate the HTML elements into Markdown syntax. Here's the converted content:
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.8.0/styles/default.min.css">
+```markdown
+# AmacleJS Documentation
 
-    <title>Amacle Migration Documentation</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-            background-color: #1e1e1e;
-            color: #ddd;
-            margin: 0;
-        }
+- [Get Started](#get-started)
+- [Migrations](migration.html)
+- [Model](model.html)
+- [Controller](#Controller)
+- [Middleware](#Middleware)
+- [Scheduler](#Scheduler)
+- [Deployment](#Deployment)
 
+## Get Started
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #1f232d;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #61dafb;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+Our framework streamlines the development process by providing a unified environment for both front-end and back-end development using React and Node.js architecture. With our solution, developers can seamlessly work within a single environment, eliminating the need to switch between separate front-end and back-end setups. This approach enhances productivity, simplifies collaboration, and accelerates the development of web applications.
 
-        h2 {
-            color: #61dafb;
-            border-bottom: 2px solid #61dafb;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
+### Create a new project
 
-        p {
-            color: #bbb;
-        }
+```
+npnx create-amacle-app your_project_name
+```
 
-        ul {
-            padding: 0;
-            margin: 0;
-        }
+### SetUp your .env file
 
-        li {
-            list-style-type: none;
-            margin-bottom: 10px;
-        }
+```plaintext
+PORT=3500
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_DATABASE=test
+ALLOW_ORIGIN=*
+```
 
-        a {
-            color: #61dafb;
-            text-decoration: none;
-        }
+- **PORT:** Specifies that the port on which your API will run
+- **DB_USER:** Specifies the User of your SQL DB
+- **DB_PASSWORD:** Specifies the password of your SQL DB
+- **DB_DATABASE:** Specifies the DATABASE NAME
+- **ALLOW_ORIGIN:** Specifies that the allowed origin of your APIs make sure to change it
 
-        a:hover {
-            text-decoration: underline;
-        }
+To Run the Project in Developer mode use:
 
-        pre code {
-            padding: 0;
-            border-radius: 5px;
-            display: block;
-            white-space: pre;
-            overflow-x: auto;
-            background-color: #282c34;
-            color: #abb2bf;
-            border: none;
-        }
-    </style>
-</head>
+```
+npm run serve
+```
 
-<body>
-    <div class="container">
-        <h1>AmacleJS Documentation</h1>
+You will be redirected to http://localhost:your-port/
+```
 
-        <ul>
-            <li><a href="#GetStarted">Get Started</a></li>
-            <li><a href="migration.html">Migrations</a></li>
-            <li><a href="model.html">Model</a></li>
-            <li><a href="#Controller">Controller</a></li>
-            <li><a href="#Middleware">Middleware</a></li>
-            <li><a href="#Scheduler">Scheduler</a></li>
-            <li><a href="#Deployment">Deployment</a></li>
-        </ul>
-
-        <h2 id="GetStarted">Get Started</h2>
-        <p>Our framework streamlines the development process by providing a unified environment for both front-end and back-end development using React and Node.js architecture. With our solution, developers can seamlessly work within a single environment, eliminating the need to switch between separate front-end and back-end setups. This approach enhances productivity, simplifies collaboration, and accelerates the development of web applications.</p>
-        <h3>Create a new project </h3>
-        <pre><code>npnx create-amacle-app your_project_name</code></pre>
-        <h3>SetUp your .env file</h3>
-        <pre><code>
-    PORT=3500
-    DB_HOST=localhost
-    DB_USER=root
-    DB_PASSWORD=
-    DB_DATABASE=test
-    ALLOW_ORIGIN=*
-        </code></pre>
-<li><strong>PORT:</strong> Specifies that the port on which your api will run</li>
-<li><strong>DB_USER:</strong> Specifies the User of your SQl DB</li>
-<li><strong>DB_PASSWORD:</strong> Specifies the password of your SQl DB</li>
-<li><strong>DB_DATABASE:</strong> Specifies  the DATABASE NAME</li>
-<li><strong>ALLOW_ORIGIN:</strong> Specifies that the allowd origin of your apis make sure to change it</li>
-<p>To Run the Project in Developer mode use</p>
-<pre><code>npm run serve</code></pre>
-<p>You will be redirected to http://localhost:your-port/</p>
-<br>
-</div>
-</body>
-
-</html>
+This Markdown content mirrors the structure and content of your HTML file, but it's formatted in Markdown syntax suitable for GitHub's rendering. You can now save this content in a file named `README.md` and upload it to your GitHub repository.
